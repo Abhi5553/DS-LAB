@@ -1,0 +1,24 @@
+#include<stdio.h>
+#include<conio.h>
+void toh(int n,char s,char a,char d)
+{
+if (n == 1)
+{
+printf("move disk 1 from %c to %c\n",s,d);
+return;
+}
+toh(n-1,a,s,d);
+printf("move disk %d from %c to %c\n",n,s,d);
+toh(n-1,a,s,d);
+}
+int main ()
+{
+int n;
+clrscr();
+printf("enter the number of disks:");
+scanf("%d",&n);
+printf("the sequence of moves :\n");
+toh(n,'s','a','d');
+getch();
+return 0;
+}
