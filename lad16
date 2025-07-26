@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char S1[50] = "Flowers";
+    char S2[50] = "are beautiful";
+    char S3[100];
+    
+    int len = strlen(S1);
+    printf("Length of S1: %d\n", len);
+
+    strcpy(S3, S1);
+    strcat(S3, " ");
+    strcat(S3, S2);
+    printf("Concatenated String: %s\n", S3);
+
+    char sub[10];
+    strncpy(sub, S1 + 1, 3);
+    sub[3] = '\0';
+    printf("Substring from S1: %s\n", sub);
+
+    
+
+    return 0;
+}
