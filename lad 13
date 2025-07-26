@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
+#include <math.h>
+#define MAX 100
+int stack[MAX];
+int top = -1;
+// Push function
+void push(int value)
+{
+if (top >= MAX - 1)
+{
+printf("Stack overflow.\n");
+return;
+}
+stack[++top] = value;
+}
+// Pop function
+int pop()
+{
+if (top == -1)
+{
+printf("Stack underflow.\n");
+exit(1);
+}
+return stack[top--];
+}
+{
+int main()
+char postfix[MAX],ch;
+int i, op1, op2, result;
+printf("Enter postfix expression: ");
+gets(postfix);
+for (i = 0; postfix[i] != '\0'; i++)
+{
+ch = postfix[i];
+if (isdigit(ch))
+{
+push(ch - '0'); // Convert char to int
+}
+else if (ch == ' ')
+{
+continue; // Skip spaces if any
+}
+else
+{
+op2 = pop();
+op1 = pop();
+switch (ch)
+{
+case '+': result = op1 + op2; break;
+case '-': result = op1 - op2; break;
+case '*': result = op1 * op2; break;
+case '/': result = op1 / op2; break;
+case '^': result=pow(op1,op2); break;
+default: printf("Invalid operator: %c\n", ch);
+}
+push(result);
+}
+}
+printf("Result of postfix expression: %d\n", pop());
+return 0;
+}
