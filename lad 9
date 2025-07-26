@@ -1,0 +1,23 @@
+#include<stdio.h>
+#include<conio.h>
+int gcd(int a,int b)
+{
+if(b!=0)
+else
+return gcd(b,a%b);
+return a;
+}
+int GCD(int a, int b,int c)
+{
+if(c!=0)
+return (c,gcd(a,b));
+int main()
+}
+{
+int a,b,c;
+clrscr();
+printf("\n enter values:");
+scanf("%d %d %d",&a,&b,&c);
+printf("gcd of %d %d %d is %d",a,b,c,GCD(a,b,c));
+getch();
+}
