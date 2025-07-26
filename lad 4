@@ -1,0 +1,119 @@
+include <stdio.h>
+#include <stdlib.h>
+// Define the node structure
+struct Node
+{
+int data;
+struct Node* next;
+};
+typedef struct Node Node;
+Node* head = NULL;
+// Function to display the linked list and its length
+void display()
+{
+Node* temp = head;
+int count = 0;
+if (head == NULL)
+{
+printf("The list is empty.\n");
+return;
+}
+{
+printf("Linked list: ");
+while (temp != NULL)
+printf("%d -> ", temp->data);
+temp = temp->next;
+count++;
+}
+printf("NULL\n");
+printf("Length of the list: %d\n", count);
+}
+// Function to create and insert nodes
+void create()
+{
+int choice = 1;
+Node *newNode, *temp;
+while (choice == 1)
+{
+newNode = (Node*) malloc(sizeof(Node));
+if (!newNode)
+{
+printf("Memory allocation failed.\n");
+return;
+}
+printf("Enter data: ");
+scanf("%d", &newNode->data);
+newNode->next = NULL;
+if (head == NULL)
+{
+head = temp = newNode;
+}
+else
+{
+temp->next = newNode;
+temp = newNode;
+}
+printf("Node inserted.\n");
+display(); // Display after each insertion
+printf("Do you want to continue? (1 = Yes, 0 = No): ");
+scanf("%d", &choice);
+}
+}
+// Function to delete a node at a specific position
+void deleteNode()
+{
+int pos, i = 1;
+Node *temp = head, *toDelete;
+if (head == NULL)
+{
+printf("List is empty. Nothing to delete.\n");
+return;
+}
+printf("Enter position to delete: ");
+scanf("%d", &pos);
+if (pos == 1)
+{
+head = head->next;
+free(temp);
+printf("Node at position 1 deleted.\n");
+display(); // Display after deletion
+return;
+}
+while (i < pos - 1 && temp != NULL)
+{
+temp = temp->next;
+i++;
+}
+{
+if (temp == NULL || temp->next == NULL)
+}
+printf("Invalid position!\n");
+return;
+toDelete = temp->next;
+temp->next = toDelete->next;
+free(toDelete);
+printf("Node at position %d deleted.\n", pos);
+display(); // Display after deletion
+}
+// Main function with menu
+int main()
+{
+int choice;
+while (1)
+{
+printf("\n--- Linked List Menu ---\n");
+printf("1. Create and Insert\n");
+printf("2. Delete\n");
+printf("3. Exit\n");
+printf("Enter your choice: ");
+scanf("%d", &choice);
+switch (choice)
+{
+case 1: create(); break;
+case 2: deleteNode(); break;
+case 3: exit(0);
+default: printf("Invalid choice!\n");
+}
+}
+return 0;
+}
